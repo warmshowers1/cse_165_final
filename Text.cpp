@@ -1,5 +1,5 @@
 #include <math.h>
-#include "text.h"
+#include "Text.h"
 
 #if defined WIN32
 #include <freeglut.h>

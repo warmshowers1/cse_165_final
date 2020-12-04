@@ -18,7 +18,10 @@ void App::keyDown(unsigned char key, float x, float y){
         exit(0);
     }
     /*
-    if(key == 'w'){
+    if(key == 'a'){
+        
+    }
+    if(key == 'd'){
         
     }
     */

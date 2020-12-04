@@ -20,7 +20,7 @@ using namespace std;
 
 Game::Game(float width){
     text = new Text(width);
-    ship = new TexRect("images/ship.png", 0, -0.75, 0.1, 0.1);
+    ship = new TexShip(0, -0.75, 0.1, 0.1);
     background = new TexRect("images/background.jpg", -1, 1, 2, 2);
     for(int i = 0; i < 2; i++){ // Always starts with 2 lives
         lives.push_back(new TexRect("images/ship.png", 
@@ -36,6 +36,10 @@ void Game::draw(){
     ship->draw();
     for(auto it = lives.cbegin(); it != lives.cend(); ++it)
         (*it)->draw();
+}
+
+void Game::moveShip(int much){ 
+    
 }
 
 Game::~Game(){
