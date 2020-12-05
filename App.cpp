@@ -17,14 +17,17 @@ void App::keyDown(unsigned char key, float x, float y){
     if (key == 27){
         exit(0);
     }
-    /*
     if(key == 'a'){
-        
+        game->moveShip(true);
     }
     if(key == 'd'){
-        
+        game->moveShip(false);
     }
-    */
+}
+
+void App::leftMouseDown(float x, float y){
+    if(game->shipHit(x, y))
+        cout << "Ship hit" << endl;
 }
 
 void App::idle(){

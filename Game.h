@@ -2,15 +2,16 @@
 #define GAME_H
 #include "Shape.h"
 #include "Text.h"
-#include "TexShip.h"
+#include "Ship.h"
 #include <deque>
 #include <time.h>
 
 
 class Game {
     Text* text;
+    Text* scoreDisp;
     Shape* background;
-    TexShip* ship;
+    Ship* ship;
 
     std::deque<Shape*> aliens;
     std::deque<Shape*> lives;
@@ -23,7 +24,8 @@ public:
     Game(float);
 
 	void draw();
-    void moveShip(int);
+    void moveShip(bool left) const ;
+    bool shipHit(float x, float y);
 
 	~Game();
 

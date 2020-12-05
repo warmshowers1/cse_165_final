@@ -1,5 +1,5 @@
-#ifndef TexShip_h
-#define TexShip_h
+#ifndef Ship_h
+#define Ship_h
 
 #include "TexRect.h"
 
@@ -15,13 +15,15 @@
 #endif
 
 
-class TexShip: public TexRect{
+class Ship: public TexRect{
 
 public:
-    TexShip(float, float, float, float);
+    Ship(float, float, float, float);
     
     void draw(float z=0) const;
     bool contains(float, float) const;
+    void moveLeft();
+    void moveRight();
 };
 
 #endif

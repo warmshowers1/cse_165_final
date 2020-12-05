@@ -17,9 +17,8 @@ public:
     App(int argc, char** argv, int width, int height, const char* title);
     
     void draw() const;
-    
     void keyDown(unsigned char key, float x, float y);
-
+    void leftMouseDown(float x, float y);
     void idle();
     
     ~App();
