@@ -1,5 +1,5 @@
-#ifndef Ship_h
-#define Ship_h
+#ifndef Minion_h
+#define Minion_h
 
 #include "TexRect.h"
 
@@ -15,12 +15,11 @@
 #endif
 
 
-class Ship: public TexRect{
+class Minion: public TexRect{
 
 public:
-    Ship(float, float, float, float);
+    Minion(float, float, float, float);
     
-    // void draw(float z=0) const;
     bool contains(float, float) const;
     void moveLeft();
     void moveRight();

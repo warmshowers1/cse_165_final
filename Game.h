@@ -3,17 +3,17 @@
 #include "Shape.h"
 #include "Text.h"
 #include "Ship.h"
+#include "Minion.h"
 #include <deque>
 #include <time.h>
 
 
 class Game {
     Text* text;
-    Text* scoreDisp;
     Shape* background;
     Ship* ship;
 
-    std::deque<Shape*> aliens;
+    std::deque<Minion*> aliens;
     std::deque<Shape*> lives;
     
     long seed;

@@ -22,6 +22,7 @@ public:
 	~Text();
     void setr();
     void renderText(float x, float y, std::string words);
+    void renderText(float x, float y, std::string words, float r, float g, float b);
     void setW(float w);
     void setColor(float r, float g, float b);
     void Lose();

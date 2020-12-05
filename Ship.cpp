@@ -1,31 +1,7 @@
 #include "Ship.h"
 #include <iostream>
 
-Ship::Ship(float x=0, float y=-0.9, float w=0.1, float h=0.1): TexRect("images/ship.png", x, y, w, h){}
-
-
-void Ship::draw(float z) const {
-    glBindTexture( GL_TEXTURE_2D, texture_id );
-    glEnable(GL_TEXTURE_2D);
-    
-    glBegin(GL_QUADS);
-    glColor4f(1, 1, 1, 1);
-    glTexCoord2f(0, 0);
-    glVertex3f(x, y - h, z);
-    
-    glTexCoord2f(0, 1);
-    glVertex3f(x, y, z);
-    
-    glTexCoord2f(1, 1);
-    glVertex3f(x+w, y, z);
-    
-    glTexCoord2f(1, 0);
-    glVertex3f(x+w, y - h, z);
-    
-    glEnd();
-    
-    glDisable(GL_TEXTURE_2D);
-}
+Ship::Ship(float x, float y=-0.9, float w=0.1, float h=0.1): TexRect("images/ship.png", x, y, w, h){}
 
 bool Ship::contains(float x, float y) const {
     //            (sx[0],sy[0])

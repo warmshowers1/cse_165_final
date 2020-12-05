@@ -3,8 +3,8 @@
 
 using namespace std;
 
-bool charLeft = false;
-bool charRight = false;
+bool playerLeft = false;
+bool playerRight = false;
 
 App::App(int argc, char** argv, int width, int height, const char* title): GlutApp(argc, argv, width, height, title){
 
@@ -20,19 +20,31 @@ void App::keyDown(unsigned char key, float x, float y){
     if (key == 27){
         exit(0);
     }
-    if(key == 'a'){
-        charLeft = true;
-        game->moveShip(true);
+    else if(key == 'a'){
+        playerLeft = true;
     }
-    if(key == 'd'){
-        charRight = true;
-        game->moveShip(false);
+    else if(key == 'd'){
+        playerRight = true;
+    }
+}
+
+void App::specialKeyDown(int key, float x, float y){
+    if(key == 100){
+        playerLeft = true;
+    }
+    else if(key == 102){
+        playerRight = true;
     }
 }
 
 void App::keyUp(unsigned char key, float x, float y){
-    charLeft = false;
-    charRight = false;
+    playerLeft = false;
+    playerRight = false;
+}
+
+void App::specialKeyUp(int key, float x, float y){
+    playerLeft = false;
+    playerRight = false;
 }
 
 void App::leftMouseDown(float x, float y){
@@ -41,9 +53,9 @@ void App::leftMouseDown(float x, float y){
 }
 
 void App::idle(){
-    if(charLeft)
+    if(playerLeft)
         game->moveShip(true);
-    else if(charRight)
+    if(playerRight)
         game->moveShip(false);
     redraw();
 }
