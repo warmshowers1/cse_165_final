@@ -18,6 +18,7 @@ public:
     
     void draw() const;
     void keyDown(unsigned char key, float x, float y);
+    void keyUp(unsigned char key, float x, float y);
     void leftMouseDown(float x, float y);
     void idle();
     

@@ -46,10 +46,10 @@ bool Ship::contains(float x, float y) const {
 
 void Ship::moveLeft(){
     if(this->x >= -1) // The left edge of the screen
-        this->x -= 0.02;
+        this->x -= 0.0025;
 }
 
 void Ship::moveRight(){
     if(this->x <= 1 - this->w) // The right edge of the screen
-        this->x += 0.02;
+        this->x += 0.0025;
 }

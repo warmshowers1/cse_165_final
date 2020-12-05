@@ -3,6 +3,9 @@
 
 using namespace std;
 
+bool charLeft = false;
+bool charRight = false;
+
 App::App(int argc, char** argv, int width, int height, const char* title): GlutApp(argc, argv, width, height, title){
 
     // Pushing different kinds of Shape in the collection
@@ -18,11 +21,18 @@ void App::keyDown(unsigned char key, float x, float y){
         exit(0);
     }
     if(key == 'a'){
+        charLeft = true;
         game->moveShip(true);
     }
     if(key == 'd'){
+        charRight = true;
         game->moveShip(false);
     }
+}
+
+void App::keyUp(unsigned char key, float x, float y){
+    charLeft = false;
+    charRight = false;
 }
 
 void App::leftMouseDown(float x, float y){
@@ -31,6 +41,10 @@ void App::leftMouseDown(float x, float y){
 }
 
 void App::idle(){
+    if(charLeft)
+        game->moveShip(true);
+    else if(charRight)
+        game->moveShip(false);
     redraw();
 }
 
