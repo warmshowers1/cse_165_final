@@ -27,6 +27,9 @@ public:
     float gettX() const ;
     float gettY() const ;
     virtual void move();
+    bool inBounds() const ;
+    
+    ~Bullet();
 };
 
 #endif

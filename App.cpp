@@ -58,6 +58,7 @@ void App::idle(){
     if(playerRight)
         game->moveShip(false);
     redraw();
+    game->check();
 }
 
 App::~App(){   

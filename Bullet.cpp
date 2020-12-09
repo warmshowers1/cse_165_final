@@ -19,9 +19,13 @@ float Bullet::gettY() const {
 // Maybe do more
 void Bullet::move(){
     y += 0.005;
+    tY += 0.005;
 }
-/*
-bool Bullet::contains(float x, float y) const {
-    return (x > this->x) && (x < this->x + this->w) && (y < this->y) && (y > this->y - this->h);
+
+bool Bullet::inBounds() const {
+    return (this->x >= -1) && (this->x <= 1) && (this->y <= 1) && (this->y >= -1);
 }
-*/
+
+Bullet::~Bullet(){
+    //Pretty sure this object is just data types, no objects
+}

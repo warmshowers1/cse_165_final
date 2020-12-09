@@ -79,12 +79,6 @@ void Game::draw(){
     // travel direction if need be
     for(auto it = aliens.cbegin(); it != aliens.cend(); ++it){
         (*it)->draw();
-        for(auto jt = bullets.cbegin(); jt != bullets.cend(); ++jt){
-            if((*it)->contains((*jt)->gettX(), (*jt)->gettY())){
-                aliens.erase(it);
-                bullets.erase(jt);
-            }
-        }
         if(dirMove)
             (*it)->moveRight();
         else
@@ -113,6 +107,27 @@ bool Game::noLives(){
 
 void Game::shoot(){
     bullets.push_back(new Bullet(ship->getX() + (ship->getW()/2), ship->getY()));
+}
+
+void Game::check(){
+    // cout << bullets.size() << endl;
+    for(auto jt = bullets.begin(); jt != bullets.end(); ++jt){
+        if(!( (*jt)->inBounds() )){
+            (*jt)->~Shape();
+        }
+    }
+
+    /*
+    for(auto it = aliens.begin(); it != aliens.end(); ++it){
+        for(auto jt = bullets.begin(); jt != bullets.end(); ++jt){
+            if((*it)->contains((*jt)->gettX(), (*jt)->gettY())){
+                cout << "HIT!" << endl;
+                aliens.erase(it);
+                bullets.erase(jt);
+            }
+        }
+    }
+    */
 }
 
 Game::~Game(){

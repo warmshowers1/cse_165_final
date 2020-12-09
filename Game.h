@@ -35,7 +35,7 @@ public:
 	~Game();
 
     void shoot();
-    void check(float x, float y); // Still need it?
+    void check(); // Still need it?
 };
 
 
