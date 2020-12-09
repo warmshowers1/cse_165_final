@@ -25,8 +25,8 @@ public:
 	float getX() const;
 	float getW() const;
 	float getH() const;
-    void moveLeft();
-    void moveRight();
+    virtual void moveLeft();
+    virtual void moveRight();
 
 	bool contains(float, float) const;
 };

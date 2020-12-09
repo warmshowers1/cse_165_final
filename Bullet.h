@@ -24,7 +24,9 @@ protected:
 public:
     Bullet(float x, float y);
 
-    void move(float amt);
+    float gettX() const ;
+    float gettY() const ;
+    virtual void move();
 };
 
 #endif

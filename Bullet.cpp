@@ -1,14 +1,24 @@
 #include "Bullet.h"
 #include <iostream>
 
-Bullet::Bullet(float x=0, float y=-0.9): TexRect("images/bullet.png", x, y, 0.025, 0.05){
-    tX = x + (w/2);
-    tY = y;
+Bullet::Bullet(float tX=0, float tY=-0.9): TexRect("images/bullet.png", x, y, 0.025, 0.05){
+    this->tX = tX;
+    this->tY = tY;
+    x = tX - (w/2);
+    y = tY;
+}
+
+float Bullet::gettX() const {
+    return tX;
+}
+
+float Bullet::gettY() const {
+    return tY;
 }
 
 // Maybe do more
-void Bullet::move(float amt){
-    y += amt;
+void Bullet::move(){
+    y += 0.005;
 }
 /*
 bool Bullet::contains(float x, float y) const {

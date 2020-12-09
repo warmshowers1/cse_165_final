@@ -20,7 +20,6 @@ class Ship: public TexRect{
 public:
     Ship(float, float, float, float);
     
-    // void draw(float z=0) const;
     bool contains(float, float) const;
     void moveLeft();
     void moveRight();

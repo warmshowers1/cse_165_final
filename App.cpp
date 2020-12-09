@@ -20,11 +20,16 @@ void App::keyDown(unsigned char key, float x, float y){
     if (key == 27){
         exit(0);
     }
-    else if(key == 'a'){
+
+    if(key == 'a'){
         playerLeft = true;
     }
     else if(key == 'd'){
         playerRight = true;
+    }
+
+    if(key == ' '){
+        game->shoot();
     }
 }
 
@@ -45,11 +50,6 @@ void App::keyUp(unsigned char key, float x, float y){
 void App::specialKeyUp(int key, float x, float y){
     playerLeft = false;
     playerRight = false;
-}
-
-void App::leftMouseDown(float x, float y){
-    if(game->shipHit(x, y))
-        cout << "Ship hit" << endl;
 }
 
 void App::idle(){

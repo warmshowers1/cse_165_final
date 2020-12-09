@@ -41,7 +41,6 @@ Game::Game(float width){
     for(int i = 0; i < 6; i++)
         aliens.push_back(new MegaAlien(-0.54 + (i * 0.18), 
                 0.6, 0.1, 0.1));
-    thing = new Bullet(0,0);
 
     seed = time(NULL);
     score = 0;
@@ -70,10 +69,22 @@ void Game::draw(){
             (*it)->moveLeft();
     }
 
+    // Draws bullets and keeps them moving
+    for(auto it = bullets.cbegin(); it != bullets.cend(); ++it){
+        (*it)->draw();
+        (*it)->move();
+    }
+
     // Draws in aliens and switches 
     // travel direction if need be
     for(auto it = aliens.cbegin(); it != aliens.cend(); ++it){
         (*it)->draw();
+        for(auto jt = bullets.cbegin(); jt != bullets.cend(); ++jt){
+            if((*it)->contains((*jt)->gettX(), (*jt)->gettY())){
+                aliens.erase(it);
+                bullets.erase(jt);
+            }
+        }
         if(dirMove)
             (*it)->moveRight();
         else
@@ -86,8 +97,6 @@ void Game::draw(){
     if( (bounds.back()->getX() + aliens.back()->getW()) >= 1)
         dirMove = false;
 
-    thing->draw();
-    thing->move(0.005);
 }
 
 void Game::moveShip(bool left) const { 
@@ -97,9 +106,13 @@ void Game::moveShip(bool left) const {
         ship->moveRight();
 }
 
-bool Game::shipHit(float x, float y){
+bool Game::noLives(){
     // Probably should add a ship death here
-    return ship->contains(x,y);
+    return lives.empty();
+}
+
+void Game::shoot(){
+    bullets.push_back(new Bullet(ship->getX() + (ship->getW()/2), ship->getY()));
 }
 
 Game::~Game(){
@@ -108,5 +121,6 @@ Game::~Game(){
     delete ship;
     aliens.clear();
     lives.clear();
+    bullets.clear();
     // Add delete for aliens deque
 }

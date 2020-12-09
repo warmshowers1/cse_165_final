@@ -14,12 +14,12 @@
 class Game {
     Text* text;
     Shape* background;
-    Ship* ship;
-    Bullet* thing;
+    Rect* ship;
 
     std::deque<Alien*> aliens;
     std::deque<Shape*> lives;
     std::deque<Rect*> bounds;
+    std::deque<Bullet*> bullets;
     
     long seed;
     int score;
@@ -30,7 +30,7 @@ public:
 
 	void draw();
     void moveShip(bool left) const ;
-    bool shipHit(float x, float y);
+    bool noLives();
 
 	~Game();
 
