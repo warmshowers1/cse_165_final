@@ -1,6 +1,6 @@
 #include "Game.h"
-#include "Rect.h"
-#include "TexRect.h"
+// #include "Rect.h"
+// #include "TexRect.h"
 #include<iostream>
 #include<fstream>
 #include<math.h>
@@ -31,13 +31,17 @@ Game::Game(float width){
             aliens.push_back(new Minion(-0.9 + (j * 0.18), 
                 0.25 + (i * 0.15), 0.1, 0.1));
     }
+    for(int i = 0; i < 6; i++)
+        aliens.push_back(new MegaAlien(-0.54 + (i * 0.18), 
+                0.6, 0.1, 0.1));
+    thing = new Bullet(0,0);
 
     seed = time(NULL);
     score = 0;
 }
 
 void Game::draw(){
-    // Always have these render first!!!
+    // Always have these render first!
     background->draw();
     ship->draw();
 
@@ -48,6 +52,9 @@ void Game::draw(){
         (*it)->draw();
     for(auto it = aliens.cbegin(); it != aliens.cend(); ++it)
         (*it)->draw();
+
+    thing->draw();
+    thing->move(0.005);
 }
 
 void Game::moveShip(bool left) const { 
@@ -58,14 +65,15 @@ void Game::moveShip(bool left) const {
 }
 
 bool Game::shipHit(float x, float y){
-    if(ship->contains(x,y))
-        return true;
-    return false;
+    // Probably should add a ship death here
+    return ship->contains(x,y);
 }
 
 Game::~Game(){
     delete text;
-    delete ship;
     delete background;
+    delete ship;
+    aliens.clear();
+    lives.clear();
     // Add delete for aliens deque
 }

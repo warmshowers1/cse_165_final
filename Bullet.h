@@ -1,7 +1,7 @@
-#ifndef Minion_h
-#define Minion_h
+#ifndef Bullet_h
+#define Bullet_h
 
-#include "Alien.h"
+#include "TexRect.h"
 
 #if defined WIN32
 #include <freeglut.h>
@@ -15,10 +15,16 @@
 #endif
 
 
-class Minion: public Alien{
+class Bullet: public TexRect {
+protected:
+    // Tip of the bullet
+    float tX;
+    float tY;
 
 public:
-    Minion(float, float, float, float);
+    Bullet(float x, float y);
+
+    void move(float amt);
 };
 
 #endif

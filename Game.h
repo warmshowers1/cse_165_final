@@ -1,9 +1,12 @@
 #ifndef GAME_H
 #define GAME_H
-#include "Shape.h"
+// #include "Shape.h"
 #include "Text.h"
 #include "Ship.h"
+#include "Alien.h"
 #include "Minion.h"
+#include "MegaAlien.h"
+#include "Bullet.h"
 #include <deque>
 #include <time.h>
 
@@ -12,8 +15,9 @@ class Game {
     Text* text;
     Shape* background;
     Ship* ship;
+    Bullet* thing;
 
-    std::deque<Minion*> aliens;
+    std::deque<Alien*> aliens;
     std::deque<Shape*> lives;
     
     long seed;

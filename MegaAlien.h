@@ -1,5 +1,5 @@
-#ifndef Minion_h
-#define Minion_h
+#ifndef MegaAlien_h
+#define MegaAlien_h
 
 #include "Alien.h"
 
@@ -15,10 +15,10 @@
 #endif
 
 
-class Minion: public Alien{
+class MegaAlien: public Alien{
 
 public:
-    Minion(float, float, float, float);
+    MegaAlien(float, float, float, float);
 };
 
 #endif
