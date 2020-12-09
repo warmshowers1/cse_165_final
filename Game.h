@@ -19,6 +19,7 @@ class Game {
 
     std::deque<Alien*> aliens;
     std::deque<Shape*> lives;
+    std::deque<Rect*> bounds;
     
     long seed;
     int score;

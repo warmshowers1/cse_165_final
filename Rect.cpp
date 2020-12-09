@@ -51,6 +51,22 @@ float Rect::getX() const {
 	return x;
 }
 
+float Rect::getW() const {
+	return w;
+}
+
+float Rect::getH() const {
+	return h;
+}
+
+void Rect::moveLeft(){
+    x -= 0.0025;
+}
+
+void Rect::moveRight(){
+    x += 0.0025;
+}
+
 bool Rect::contains(float x, float y) const{
 	return x >= this->x && x <= this->x + w && y <= this->y && y >= this->y - h;
 }

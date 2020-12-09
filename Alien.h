@@ -24,8 +24,8 @@ public:
     Alien(const char*, float, float, float, float);
     
     virtual bool contains(float, float) const;
-    void moveLeft();
-    void moveRight();
+    // void moveLeft();
+    // void moveRight();
 };
 
 #endif

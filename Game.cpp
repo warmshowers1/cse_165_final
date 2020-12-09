@@ -18,6 +18,8 @@
 
 using namespace std;
 
+bool dirMove = false;
+
 Game::Game(float width){
     text = new Text(width);
     ship = new Ship(0, -0.75, 0.1, 0.1);
@@ -27,9 +29,14 @@ Game::Game(float width){
             -0.9, 0.08, 0.08));
     }
     for(int i = 0; i < 2; i++){ // 2 rows of 
-        for(int j = 0; j < 10; j++) // 10 minions
+        for(int j = 0; j < 10; j++){ // 10 minions
             aliens.push_back(new Minion(-0.9 + (j * 0.18), 
                 0.25 + (i * 0.15), 0.1, 0.1));
+            if(i == 0 && j == 0)
+                bounds.push_back(new Rect(-0.9 + (j * 0.18), 0.8, 0.1, 0.1, 1, 1, 1));
+            else if(i == 1 && j == 9)
+                bounds.push_back(new Rect(-0.9 + (j * 0.18), 0.8, 0.1, 0.1, 1, 1, 1));
+        }
     }
     for(int i = 0; i < 6; i++)
         aliens.push_back(new MegaAlien(-0.54 + (i * 0.18), 
@@ -48,10 +55,36 @@ void Game::draw(){
     text->renderText(-0.96, 0.9, "1UP");
     text->renderText(-0.25, 0.9, "HIGH SCORE");
     text->renderText(-0.96, 0.8, to_string(score), 1, 1, 1);
+
+    // Draw in num lives
     for(auto it = lives.cbegin(); it != lives.cend(); ++it)
         (*it)->draw();
-    for(auto it = aliens.cbegin(); it != aliens.cend(); ++it)
+
+    // Draws bounds for testing
+    for(auto it = bounds.cbegin(); it != bounds.cend(); ++it){
+        // Comment out when done testing
+        // (*it)->draw();
+        if(dirMove)
+            (*it)->moveRight();
+        else
+            (*it)->moveLeft();
+    }
+
+    // Draws in aliens and switches 
+    // travel direction if need be
+    for(auto it = aliens.cbegin(); it != aliens.cend(); ++it){
         (*it)->draw();
+        if(dirMove)
+            (*it)->moveRight();
+        else
+            (*it)->moveLeft();
+    }
+
+    // Determine which directions aliens need to travel
+    if(bounds.front()->getX() <= -1)
+        dirMove = true;
+    if( (bounds.back()->getX() + aliens.back()->getW()) >= 1)
+        dirMove = false;
 
     thing->draw();
     thing->move(0.005);

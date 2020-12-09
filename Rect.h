@@ -20,10 +20,13 @@ public:
 	void draw(float z=0) const;
 
 	void setY(float y);
+	void setX(float x);
 	float getY() const;
 	float getX() const;
-	void setX(float x);
-
+	float getW() const;
+	float getH() const;
+    void moveLeft();
+    void moveRight();
 
 	bool contains(float, float) const;
 };

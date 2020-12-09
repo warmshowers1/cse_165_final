@@ -7,6 +7,7 @@ bool Alien::contains(float x, float y) const {
     return (x > this->x) && (x < this->x + this->w) && (y < this->y) && (y > this->y - this->h);
 }
 
+/*
 void Alien::moveLeft(){
     if(this->x >= -1) // The left edge of the screen
         this->x -= 0.0025;
@@ -16,3 +17,4 @@ void Alien::moveRight(){
     if(this->x <= 1 - this->w) // The right edge of the screen
         this->x += 0.0025;
 }
+*/
