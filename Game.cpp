@@ -110,24 +110,32 @@ void Game::shoot(){
 }
 
 void Game::check(){
-    // cout << bullets.size() << endl;
-    for(auto jt = bullets.begin(); jt != bullets.end(); ++jt){
+    for(auto jt = bullets.begin(); jt != bullets.end();){
         if(!( (*jt)->inBounds() )){
-            (*jt)->~Shape();
+            jt = bullets.erase(jt);
+        }
+        else{
+            ++jt;
         }
     }
+    bullets.shrink_to_fit();
 
-    /*
+    // cout << bullets.size() << endl;
     for(auto it = aliens.begin(); it != aliens.end(); ++it){
-        for(auto jt = bullets.begin(); jt != bullets.end(); ++jt){
+        for(auto jt = bullets.begin(); jt != bullets.end();){
             if((*it)->contains((*jt)->gettX(), (*jt)->gettY())){
                 cout << "HIT!" << endl;
-                aliens.erase(it);
-                bullets.erase(jt);
+                it = aliens.erase(it);
+                jt = bullets.erase(jt);
+                break;
+            }
+            else{
+                ++jt;
             }
         }
     }
-    */
+    aliens.shrink_to_fit();
+    bullets.shrink_to_fit();
 }
 
 Game::~Game(){
