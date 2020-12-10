@@ -1,30 +1,11 @@
-# Installation Instructions
+# Galaga Remake
+This is a recreation of the famous 1980's arcade game, Galaga.
 
-## Windows Users
+## Controls
+**A** and **D** as well as both **Left-arrow** & **Right-arrow** keys control movement of your ship.
+**Space** allows your spaceship to shoot. 
+Your objective is to shoot the aliens as accurately as possible.
 
-This project can only run in your Linux subsystem (Ubuntu Shell), not natively in Windows.
-
-- Update your apt repositories: `sudo apt update`
-- Install freeglut: `sudo apt install freeglut3-dev`
-- Install xming (https://sourceforge.net/projects/xming/)
-- Set display environment variable: `echo "export DISPLAY=localhost:0.0" >> ~/.bashrc`
-- Relaunch your VS Code
-
-## Linux Users
-
-If you are running Linux natively (not the Ubuntu Shell under Windows)
-
-- Update your apt repositories: `sudo apt update`
-- Install freeglut: `sudo apt install freeglut3-dev`
-
-## Mac Users
-
-On a Mac, the project just works
-
-# Running the App
-
-After all dependencies above have been installed, navigate to the project folder and:
-
-- Compile: `make`
-
-- Run: `./glutapp`
+## Problems
+This game may crash or report segmentation faults based on your system. However, it has been highly inconsistent on what causes these errors. I apologize in advance if you find problems like these. 
+If you have trouble compiling, please try going into the makefile and uncomment line 16, which declares the CFLAGS for compiling. 
