@@ -1,7 +1,7 @@
 #include "Bullet.h"
 #include <iostream>
 
-Bullet::Bullet(float tX=0, float tY=-0.9): TexRect("images/bullet.png", x, y, 0.025, 0.05){
+Bullet::Bullet(float tX, float tY): TexRect("images/bullet.png", x, y, 0.025, 0.05){
     this->tX = tX;
     this->tY = tY;
     x = tX - (w/2);
