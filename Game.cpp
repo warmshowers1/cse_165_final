@@ -43,6 +43,7 @@ Game::Game(float width){
     for(int i = 0; i < 6; i++)
         aliens.push_back(new MegaAlien(-0.54 + (i * 0.18), 
                 0.6, 0.1, 0.1));
+    aliens.push_back(new Minion(-1, 0, 0.5, 0.5));
 
     seed = time(NULL);
     score = 0;
@@ -82,7 +83,7 @@ void Game::draw(){
 
         // Draws in aliens and switches 
         // travel direction if need be
-        for(auto it = aliens.cbegin(); it != aliens.cend(); ++it){
+        for(auto it = aliens.cbegin(); it != aliens.cend()-1; ++it){
             (*it)->draw();
             if(dirMove)
                 (*it)->moveRight();
@@ -91,10 +92,10 @@ void Game::draw(){
         }
 
         // Determine which directions aliens need to travel
-        if(aliens.size() > 0){
+        if(aliens.size() > 1){
             if(bounds.front()->getX() <= -1)
                 dirMove = true;
-            if( (bounds.back()->getX() + aliens.back()->getW()) >= 1)
+            if( (bounds.back()->getX() + aliens[aliens.size()-2]->getW()) >= 1)
                 dirMove = false;
         }
     }
@@ -119,7 +120,7 @@ bool Game::noLives(){
 }
 
 bool Game::Won(){
-    if(aliens.size() == 0){
+    if(aliens.size() == 1){
         gameOver = true;
         return true;
     }
@@ -147,7 +148,7 @@ void Game::check(){
         }
         bullets.shrink_to_fit();
 
-        if(aliens.size() > 0){
+        if(aliens.size() > 1){
             // Checks all aliens to see if a bullet hit
             // then erases both the alien and the bullet
             for(auto it = aliens.begin(); it != aliens.end(); it++){
