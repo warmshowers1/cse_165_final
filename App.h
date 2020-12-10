@@ -4,7 +4,6 @@
 #include <vector>
 #include "GlutApp.h"
 #include "Rect.h"
-#include "Circle.h"
 #include "TexRect.h"
 #include "Game.h"
 

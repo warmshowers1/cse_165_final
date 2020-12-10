@@ -1,7 +1,7 @@
 #include "Ship.h"
 #include <iostream>
 
-Ship::Ship(float x, float y=-0.9, float w=0.1, float h=0.1): TexRect("images/ship.png", x, y, w, h){}
+Ship::Ship(float x, float y, float w, float h): TexRect("images/ship.png", x, y, w, h){}
 
 bool Ship::contains(float x, float y) const {
     //            (sx[0],sy[0])
