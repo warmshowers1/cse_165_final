@@ -46,6 +46,8 @@ Game::Game(float width){
 
     seed = time(NULL);
     score = 0;
+    shots = 0;
+    hits = 0;
     gameOver = false;
 }
 
@@ -57,7 +59,6 @@ void Game::draw(){
         ship->draw();
 
         text->renderText(-0.96, 0.9, "1UP");
-        text->renderText(-0.25, 0.9, "HIGH SCORE");
         text->renderText(-0.96, 0.8, to_string(score), 1, 1, 1);
 
         // Draw in num lives
@@ -98,12 +99,10 @@ void Game::draw(){
         }
     }
     else{
-        text->renderText(-0.3, 0.1, "-Results-");
-        /*
-        text->renderText(-0.3, 0, "-Results-");
-        text->renderText(-0.3, -0.1, "-Results-");
-        text->renderText(-0.3, -0.2, "-Results-");
-        */
+        text->renderText(-0.3, 0.2, "-RESULTS-");
+        text->renderText(-0.5, 0.1, "SHOTS FIRED:             " + to_string(shots),1,1,0);
+        text->renderText(-0.5, 0, "NUMBER OF HITS:     " + to_string(hits),1,1,0);
+        text->renderText(-0.5, -0.1, "HIT MISS RATIO:     %" + to_string((int)(((float) hits / (float) shots) * 100)), 1,1,1);
     }
 }
 
@@ -131,6 +130,7 @@ void Game::shoot(){
     if(time(NULL) - shotAt >= 1 || shotAt == NULL){
         bullets.push_back(new Bullet(ship->getX() + (ship->getW()/2), ship->getY()));
         shotAt = time(NULL);
+        shots++;
     }
 }
 
@@ -155,6 +155,7 @@ void Game::check(){
                     if((*jt)->gettY() >= (LOWEST_ALIEN - (*it)->getH())){
                         if((*it)->contains((*jt)->gettX(), (*jt)->gettY())){
                             cout << "HIT!" << endl;
+                            hits++;
                             if(it != aliens.end()-1){
                                 it = aliens.erase(it);
                                 jt = bullets.erase(jt);

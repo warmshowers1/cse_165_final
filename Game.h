@@ -23,6 +23,8 @@ class Game {
     
     long seed;
     int score;
+    int shots;
+    short int hits;
     bool gameOver;
 
 public:
