@@ -23,6 +23,7 @@ class Game {
     
     long seed;
     int score;
+    bool gameOver;
 
 public:
 	Game();
@@ -31,6 +32,7 @@ public:
 	void draw();
     void moveShip(bool left) const ;
     bool noLives();
+    bool Won();
 
 	~Game();
 
