@@ -90,10 +90,12 @@ void Game::draw(){
         }
 
         // Determine which directions aliens need to travel
-        if(bounds.front()->getX() <= -1)
-            dirMove = true;
-        if( (bounds.back()->getX() + aliens.back()->getW()) >= 1)
-            dirMove = false;
+        if(aliens.size() > 0){
+            if(bounds.front()->getX() <= -1)
+                dirMove = true;
+            if( (bounds.back()->getX() + aliens.back()->getW()) >= 1)
+                dirMove = false;
+        }
     }
     else{
         text->renderText(-0.3, 0.1, "-Results-");
@@ -175,9 +177,6 @@ void Game::check(){
             }
             aliens.shrink_to_fit();
             bullets.shrink_to_fit();
-        }
-        else{
-            
         }
     }
 }
